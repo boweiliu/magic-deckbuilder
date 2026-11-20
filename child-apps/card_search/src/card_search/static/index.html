@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Card Search</title>
+<link rel="icon" href="/static/icon.svg">
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<main id="layout">
+  <nav id="side">
+    <h2>Searches</h2>
+    <ul id="history" class="history"></ul>
+  </nav>
+
+  <section id="main">
+    <select id="picker" class="picker" aria-label="Pick a search"></select>
+    <p id="welcome" class="empty">No searches yet. Describe the cards you want in the chat; Claude writes the
+      search, and it shows up here to run and tweak.</p>
+
+    <article id="search" hidden>
+      <header class="search-head">
+        <h1 id="search-title"></h1>
+        <div class="meta"><span id="search-status"></span><a id="file-link" target="_blank" rel="noopener">Saved file, all versions</a></div>
+      </header>
+      <p id="search-notes" class="summary" title="Tap to show all"></p>
+      <p id="update-banner" class="banner" hidden>Claude changed this search while you were editing.
+        <button type="button" id="load-update">Load Claude's change</button></p>
+
+      <div id="bar" class="bar">
+        <div id="tabs" class="tabs" role="tablist"></div>
+      </div>
+      <label class="sort"><span>Sort</span>
+        <select id="sort">
+          <option value="popular">Most played</option>
+          <option value="mv" title="By mana value, most played first within each">Mana value</option>
+          <option value="name">Name</option>
+        </select>
+      </label>
+      <div id="query"></div>
+    </article>
+  </section>
+
+  <aside id="preview" class="preview" aria-hidden="true">
+    <img id="preview-img" alt="">
+    <img id="preview-back" alt="" hidden>
+  </aside>
+</main>
+<script type="module" src="/static/app.js"></script>
+<!--SHELL_PAGE_SCRIPT-->
+</body>
+</html>

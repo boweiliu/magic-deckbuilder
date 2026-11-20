@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Categories - Deck List</title>
+<link rel="stylesheet" href="/static/app.css">
+<link rel="stylesheet" href="/static/categories.css">
+</head>
+<body>
+<main id="page" class="wide">
+  <header id="top">
+    <div class="title-row"><h1>Categories</h1><a class="nav" id="back" href="/">Back to the deck</a></div>
+    <p class="note">The order here is the order of the zones, clockwise from the top. The zones place themselves. <span id="save-status"></span></p>
+  </header>
+
+  <div id="manage">
+    <section id="list-pane">
+      <ol id="cat-list"></ol>
+      <form id="add-form" autocomplete="off">
+        <input id="add-name" type="text" placeholder="New category" aria-label="New category name" maxlength="24">
+        <button type="submit">Add</button>
+      </form>
+      <p class="hint" id="message"></p>
+    </section>
+
+    <section id="preview-pane">
+      <div class="preview-head">
+        <h2>What dragging looks like</h2>
+        <div id="device" class="segmented" role="radiogroup" aria-label="Screen">
+          <button data-device="phone" role="radio">Phone</button>
+          <button data-device="computer" role="radio">Computer</button>
+        </div>
+      </div>
+      <div id="screen">
+        <svg id="zone-svg" preserveAspectRatio="none"></svg>
+        <div id="zone-labels"></div>
+      </div>
+      <p class="hint" id="preview-hint">Point at the screen to see which zone a card would land in.</p>
+    </section>
+  </div>
+</main>
+<script type="module" src="/static/categories.js"></script>
+<!--SHELL_PAGE_SCRIPT-->
+</body>
+</html>

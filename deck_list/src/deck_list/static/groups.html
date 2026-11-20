@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deck List - groups</title>
+<link rel="icon" href="/static/icon.svg">
+<link rel="stylesheet" href="/static/app.css">
+<link rel="stylesheet" href="/static/groups.css">
+<link rel="modulepreload" href="/static/groups.js">
+<link rel="modulepreload" href="/static/zones.js">
+<link rel="modulepreload" href="/static/api.js">
+</head>
+<body class="grouped">
+<main id="layout">
+  <section id="list-pane">
+    <header id="deck-header">
+      <h1><select id="deck-pick" aria-label="Which list"><option>Deck</option></select></h1>
+      <span id="deck-count" class="count"></span>
+      <span id="save-status" class="status">Loading your deck...</span>
+    </header>
+    <p class="view-note">Grouped view. Tap cards to select them, then Group or Ungroup. <a id="plain-link" href="/">Plain view</a></p>
+
+    <div id="commander" class="commander"></div>
+
+    <div id="add" class="add">
+      <input id="add-input" type="text" autocomplete="off" spellcheck="false"
+             placeholder="Type a card name, Enter to add" aria-label="Card name">
+      <ul id="suggestions" class="suggestions" role="listbox" hidden></ul>
+      <div id="add-message" class="add-message"></div>
+    </div>
+
+    <form id="cycle" class="cycle" hidden>
+      <div id="cycle-list"></div>
+      <div class="cycle-foot">
+        <input id="cycle-name" type="text" maxlength="40" autocomplete="off" aria-label="Group name">
+        <button type="submit" id="cycle-add">Add</button>
+        <button type="button" id="cycle-cancel">Cancel</button>
+      </div>
+    </form>
+
+    <div id="units"></div>
+    <p id="empty" class="empty" hidden>No cards yet. Start typing above.</p>
+  </section>
+
+  <aside id="preview" class="preview" aria-hidden="true">
+    <img id="preview-img" alt="">
+    <img id="preview-back" alt="" hidden>
+  </aside>
+</main>
+
+<div id="actions" hidden>
+  <span id="actions-count"></span>
+  <button id="do-group">Group</button>
+  <button id="do-ungroup">Ungroup</button>
+  <button id="do-clear">Clear</button>
+</div>
+<div id="toast" role="status" hidden><span id="toast-text"></span><button id="toast-undo" hidden>Undo</button></div>
+<script type="module" src="/static/groups.js"></script>
+<!--SHELL_PAGE_SCRIPT-->
+</body>
+</html>

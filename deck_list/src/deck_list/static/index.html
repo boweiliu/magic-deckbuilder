@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deck List</title>
+<link rel="icon" href="/static/icon.svg">
+<link rel="stylesheet" href="/static/app.css">
+<link rel="modulepreload" href="/static/app.js">
+<link rel="modulepreload" href="/static/zones.js">
+<link rel="modulepreload" href="/static/api.js">
+</head>
+<body>
+<main id="layout">
+  <section id="list-pane">
+    <header id="deck-header">
+      <h1><select id="deck-pick" aria-label="Which list"><option>Deck</option></select></h1>
+      <span id="deck-count" class="count"></span>
+      <span id="save-status" class="status">Loading your deck...</span>
+    </header>
+
+    <form id="new-deck" class="new-deck" hidden>
+      <input id="new-deck-name" type="text" autocomplete="off" spellcheck="false" maxlength="60"
+             placeholder="Name of the new list" aria-label="Name of the new list">
+      <label><input id="new-deck-copy" type="checkbox" checked> Same commander and categories as <span id="new-deck-from"></span></label>
+      <div class="buttons"><button type="submit">Create</button><button type="button" id="new-deck-cancel">Cancel</button></div>
+      <div id="new-deck-message" class="add-message"></div>
+    </form>
+
+    <div id="commander" class="commander"></div>
+
+    <div id="add" class="add">
+      <input id="add-input" type="text" autocomplete="off" spellcheck="false"
+             placeholder="Type a card name, Enter to add" aria-label="Card name">
+      <ul id="suggestions" class="suggestions" role="listbox" hidden></ul>
+      <div id="add-message" class="add-message"></div>
+    </div>
+
+    <div id="legend" aria-label="Categories"></div>
+    <form id="autotag" class="autotag" hidden>
+      <p class="autotag-note">Suggested tags. Untick any you don't want; nothing is saved until you press Add, and no tag you already have is changed.</p>
+      <div id="autotag-list"></div>
+      <div class="autotag-foot"><button type="submit" id="autotag-add">Add</button><button type="button" id="autotag-cancel">Cancel</button></div>
+    </form>
+    <div id="cards"></div>
+    <p id="empty" class="empty" hidden>No cards yet. Start typing above.</p>
+
+    <footer class="foot">
+      <a id="text-link" href="/api/decks/ulalek/text">Plain text list</a>
+    </footer>
+  </section>
+
+  <aside id="preview" class="preview" aria-hidden="true">
+    <img id="preview-img" alt="">
+    <img id="preview-back" alt="" hidden>
+  </aside>
+</main>
+
+<div id="zones" hidden>
+  <svg id="zone-svg" preserveAspectRatio="none"></svg>
+  <div id="zone-labels"></div>
+  <div id="center-label">Let go here to cancel</div>
+  <div id="ghost"><img id="ghost-img" alt=""><span id="ghost-name"></span></div>
+</div>
+<div id="toast" role="status" hidden><span id="toast-text"></span><button id="toast-undo">Undo</button></div>
+<!--DECK_DATA-->
+<script type="module" src="/static/app.js"></script>
+<!--SHELL_PAGE_SCRIPT-->
+</body>
+</html>

@@ -1,0 +1,7 @@
+title = "Scryfall card data refresh"
+what = "Downloads Scryfall's newest card, rulings and tag files and updates the Deckbuilder's card database."
+every = "1d"
+at = "04:30"
+command = ["uv", "run", "--frozen", "--project", ".external_worktrees/magic-deckbuilder/scryfall_mirror", "scryfall-mirror", "refresh"]
+app = "deck-list"
+enabled = true

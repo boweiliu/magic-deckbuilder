@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Goldfish</title>
+  <link rel="icon" href="/static/icon.svg">
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <header id="topbar">
+    <div class="top-row">
+      <select id="deck-name" class="deck-name" aria-label="Which deck list to play" title="Play another of your lists"></select>
+      <span id="turn" class="turn"></span>
+      <span class="spacer"></span>
+      <button id="btn-undo" type="button" title="Undo the last move">Undo <kbd>Z</kbd></button>
+      <button id="btn-new" type="button" title="Shuffle up your latest deck list and start over">New game</button>
+    </div>
+    <div class="top-row">
+      <button id="btn-next" type="button" class="primary" title="Untap everything, draw a card, next turn">Next turn <kbd>N</kbd></button>
+      <button id="btn-draw" type="button">Draw <kbd>D</kbd></button>
+      <button id="btn-untap" type="button">Untap all <kbd>U</kbd></button>
+      <span class="spacer"></span>
+      <button id="btn-keys" type="button" class="wide-only" title="Keyboard shortcuts">Keys <kbd>?</kbd></button>
+      <button id="btn-board-view" type="button" title="Show cards on the board as text or as pictures"></button>
+    </div>
+  </header>
+
+  <div id="banner" class="banner" hidden></div>
+  <div id="list-changed" class="banner" hidden></div>
+
+  <main id="board">
+    <section class="zone" id="zone-battlefield" data-zone="battlefield">
+      <h2>Battlefield</h2>
+      <div class="cards" id="cards-battlefield-other"></div>
+      <div class="cards lands" id="cards-battlefield-lands"></div>
+    </section>
+
+    <section class="side">
+      <section class="zone small" id="zone-command" data-zone="command">
+        <h2>Command zone</h2>
+        <div class="cards" id="cards-command"></div>
+      </section>
+      <section class="zone small" id="zone-library" data-zone="library">
+        <h2>Library <span id="count-library" class="count"></span></h2>
+      </section>
+      <section class="zone small collapsible" id="zone-graveyard" data-zone="graveyard">
+        <h2><button type="button" class="zone-toggle" data-zone="graveyard">Graveyard <span id="count-graveyard" class="count"></span></button></h2>
+        <div class="cards" id="cards-graveyard"></div>
+      </section>
+      <section class="zone small collapsible" id="zone-exile" data-zone="exile">
+        <h2><button type="button" class="zone-toggle" data-zone="exile">Exile <span id="count-exile" class="count"></span></button></h2>
+        <div class="cards" id="cards-exile"></div>
+      </section>
+    </section>
+
+    <section class="zone" id="zone-hand" data-zone="hand">
+      <h2>Hand <span id="count-hand" class="count"></span></h2>
+      <div class="cards" id="cards-hand"></div>
+    </section>
+  </main>
+
+  <aside id="preview" class="preview" hidden>
+    <div class="preview-resize" id="preview-resize" title="Drag to resize the preview"></div>
+    <div class="preview-head">
+      <button id="pv-mode" type="button" title="Show the card as text or as its picture"></button>
+      <button id="pv-smaller" type="button" title="Smaller" aria-label="Smaller">A-</button>
+      <button id="pv-bigger" type="button" title="Bigger" aria-label="Bigger">A+</button>
+      <span class="spacer"></span>
+      <a id="pv-source" class="pv-source" target="_blank" rel="noopener">Scryfall</a>
+      <button id="pv-close" type="button" title="Close" aria-label="Close">x</button>
+    </div>
+    <div class="preview-body" id="preview-body"></div>
+    <div class="preview-actions" id="preview-actions"></div>
+  </aside>
+
+  <div id="keys" class="keys" hidden>
+    <div class="keys-head"><b>Keyboard shortcuts</b><button type="button" class="keys-close" aria-label="Close">x</button></div>
+    <p>Card keys act on the card under the mouse, or the one you picked.</p>
+    <dl>
+      <dt>D</dt><dd>Draw</dd><dt>N</dt><dd>Next turn (untap, draw)</dd><dt>U</dt><dd>Untap all</dd>
+      <dt>Z</dt><dd>Undo (also Ctrl/Cmd Z)</dd><dt>K / M</dt><dd>Keep / Mulligan</dd>
+      <dt>T</dt><dd>Tap or untap</dd><dt>B</dt><dd>Onto the battlefield (play, cast)</dd>
+      <dt>H</dt><dd>To hand</dd><dt>G</dt><dd>To graveyard</dd><dt>E</dt><dd>To exile</dd>
+      <dt>L</dt><dd>Top of library</dd><dt>Shift L</dt><dd>Bottom of library</dd><dt>C</dt><dd>Command zone</dd>
+      <dt>Esc</dt><dd>Close the preview</dd><dt>?</dt><dd>This list</dd>
+    </dl>
+    <p>Or drag a card onto a zone. On a phone, hold the card a moment, then drag.</p>
+  </div>
+
+  <div id="error" class="error" hidden></div>
+
+  <script src="/static/app.js"></script>
+  <!--SHELL_PAGE_SCRIPT-->
+</body>
+</html>
